@@ -26,9 +26,34 @@ const Signup: FC = () => {
 			return;
 		}
 
-		if (password.length < 6) {
-			setError('Password must be at least 6 characters long');
-			return;
+		const passwordSteps = [
+			{
+				test: (pw: string) => pw.length >= 8,
+				message: 'Password must be at least 8 characters long'
+			},
+			{
+				test: (pw: string) => /[a-z]/.test(pw),
+				message: 'Password must include at least one lowercase letter'
+			},
+			{
+				test: (pw: string) => /[A-Z]/.test(pw),
+				message: 'Password must include at least one uppercase letter'
+			},
+			{
+				test: (pw: string) => /\d/.test(pw),
+				message: 'Password must include at least one number'
+			},
+			{
+				test: (pw: string) => /[!@#$%^&*(),.?":{}|<>]/.test(pw),
+				message: 'Password must include at least one special character'
+			}
+		];
+
+		for (const step of passwordSteps) {
+			if (!step.test(password)) {
+				setError(step.message);
+				return;
+			}
 		}
 
 		setError('');
