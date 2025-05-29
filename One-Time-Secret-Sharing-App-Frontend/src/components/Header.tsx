@@ -1,7 +1,6 @@
 import { useContext, type FC } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import { Lock } from 'lucide-react';
 import AuthContext from '../context/AuthContext.tsx';
 
 const Header: FC = () => {
@@ -16,8 +15,7 @@ const Header: FC = () => {
 		<Navbar bg="primary" variant="dark" expand="lg" className="mb-4">
 			<Container>
 				<Navbar.Brand as={ Link } to="/" className="d-flex align-items-center">
-					<Lock size={ 24 } className="me-2" />
-					<span>SecretShare</span>
+					<span>One-Time Secret Sharing App</span>
 				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
