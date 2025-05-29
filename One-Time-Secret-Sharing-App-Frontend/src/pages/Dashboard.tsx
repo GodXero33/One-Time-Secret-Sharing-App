@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState, type FC } from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Plus, Clock } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import AuthContext from '../context/AuthContext';
 
 const Dashboard: FC = () => {
@@ -56,17 +56,16 @@ const Dashboard: FC = () => {
 				</Col>
 			</Row>
 
-			<Row>
-				<Col>
-					<Card className="shadow-sm bg-light border-0">
-						<Card.Body className="p-4">
-							<div className="d-flex align-items-center mb-3">
-								<Clock size={ 24 } className="text-primary me-2" />
-								<h5 className="fw-bold mb-0">How One-Time Secrets Work</h5>
+			<Row className="mb-4">
+				<Col md={ 8 }>
+					<Card className="shadow-sm h-100">
+						<Card.Body className="d-flex flex-column">
+							<Card.Title className="fw-bold">View Secret</Card.Title>
+							<div className="mt-auto">
+								<Link to="/view-secret">
+									<Button variant="primary" className="mt-3">View Secret</Button>
+								</Link>
 							</div>
-							<p className="mb-0">When you create a secret, we generate a unique link. The recipient uses this link and enters 
-							the password you've set to view the secret. Once viewed, the secret is permanently deleted 
-							from our system, ensuring it can never be accessed again.</p>
 						</Card.Body>
 					</Card>
 				</Col>

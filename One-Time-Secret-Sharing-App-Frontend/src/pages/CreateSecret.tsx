@@ -25,10 +25,9 @@ const CreateSecret: FC = () => {
 
 		try {
 			const response = await axios.post('/api/secret', { message, password });
-			const baseUrl = window.location.origin;
-			const fullUrl = `${baseUrl}${response.data.url}`;
+			const secret = `${response.data.url.split('/')[2]}`;
 
-			setSecretUrl(fullUrl);
+			setSecretUrl(secret);
 			toast.success('Secret created successfully!');
 		} catch (err: any) {
 			const errorMessage = err.response?.data?.message || 'Failed to create secret. Please try again.';
