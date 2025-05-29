@@ -16,38 +16,39 @@ import PrivateRoute from './components/PrivateRoute.tsx';
 
 export default function App () {
 	return (
-	<AuthProvider>
-		<Router>
-			<div className="d-flex flex-column min-vh-100">
-				<Header />
-				<main className="flex-grow-1">
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/signup" element={<Signup />} />
-					<Route path="/dashboard" element={
-					<PrivateRoute>
-						<Dashboard />
-					</PrivateRoute>
-					} />
-					<Route path="/create-secret" element={
-					<PrivateRoute>
-						<CreateSecret />
-					</PrivateRoute>
-					} />
-					<Route path="/view-secret" element={
-					<PrivateRoute>
-						<ViewSecret />
-					</PrivateRoute>
-					} />
-					<Route path="/secret/:token" element={<ViewSecret />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-				</main>
-				<Footer />
-			</div>
-			<ToastContainer position="top-right" autoClose={3000} />
-		</Router>
-	</AuthProvider>
+		<AuthProvider>
+			<Router>
+				<div className="d-flex flex-column min-vh-100">
+					<Header />
+					<main className="flex-grow-1">
+						<Routes>
+							<Route path="/" element={ <Home /> } />
+							<Route path="/login" element={ <Login /> } />
+							<Route path="/signup" element={ <Signup /> } />
+							<Route path="/dashboard" element={
+								<PrivateRoute>
+									<Dashboard />
+								</PrivateRoute>
+							} />
+							<Route path="/create-secret" element={
+								<PrivateRoute>
+									<CreateSecret />
+								</PrivateRoute>
+							} />
+							<Route path="/view-secret" element={
+								<PrivateRoute>
+									<ViewSecret />
+								</PrivateRoute>
+							} />
+							<Route path="/secret/:token" element={ <ViewSecret /> } />
+							<Route path="*" element={ <NotFound /> } />
+						</Routes>
+					</main>
+					<Footer />
+				</div>
+
+				<ToastContainer position="top-right" autoClose={ 3000 } />
+			</Router>
+		</AuthProvider>
 	);
 }
