@@ -1,0 +1,27 @@
+DROP DATABASE IF EXISTS one_time_secret_sharing_app;
+CREATE DATABASE one_time_secret_sharing_app;
+USE one_time_secret_sharing_app;
+
+CREATE TABLE users (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	email VARCHAR(255) UNIQUE NOT NULL,
+	password_hash VARCHAR(255) NOT NULL,
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE secrets (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	token VARCHAR(255) UNIQUE NOT NULL,
+	message TEXT NOT NULL,
+	password_hash VARCHAR(255) NOT NULL,
+	creator_user_id INT NOT NULL,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE access_logs (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	token VARCHAR(255),
+	success BOOLEAN,
+	ip_address VARCHAR(255),
+	timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+);
